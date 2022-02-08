@@ -1,0 +1,35 @@
+.header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.27);
+}
+
+.header__ul, .header__ul_child-ul {
+    list-style: none;
+}
+
+.header__ul {
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+}
+.header__ul_child-ul {
+    gap: 70px;
+}
+.header__ul img {
+    width: 60px;
+    height: 60px;
+}
+
+a {
+    font-size: 40px;
+}
+
+a:hover {
+  color: darkgrey;
+}
+
+.header__ul_child-checked {
+    position: absolute;
+    right: 250px;
+    top: 28px;
+}

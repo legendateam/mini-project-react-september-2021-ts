@@ -1,0 +1,13 @@
+.notFoundPage {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+h1 {
+    color: red;
+    font-size: 70px;
+}
+button {
+    font-size: 25px;
+}
