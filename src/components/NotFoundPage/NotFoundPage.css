@@ -4,10 +4,10 @@
     align-items: center;
     height: 70vh;
 }
-h1 {
+.notFoundPage h1 {
     color: red;
     font-size: 70px;
 }
-button {
+.notFoundPage button {
     font-size: 25px;
 }

@@ -6,4 +6,10 @@ export interface IUrls {
     find: string,
     credits: string,
     images: string,
+    watch: string,
+    providers: string,
+    regions: string,
+    key: string,
+    poster: string,
+    posterW500: string
 }

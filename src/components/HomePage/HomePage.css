@@ -1,0 +1,22 @@
+.home__page {
+    margin: 50px;
+    padding: 0 125px;
+}
+
+.home__page__country {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.home__page_content {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.home__page_content-arrow {
+    width: 95%;
+    justify-content: end;
+}
+

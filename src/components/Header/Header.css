@@ -20,11 +20,11 @@
     height: 60px;
 }
 
-a {
+.header a {
     font-size: 40px;
 }
 
-a:hover {
+.header a:hover {
   color: darkgrey;
 }
 

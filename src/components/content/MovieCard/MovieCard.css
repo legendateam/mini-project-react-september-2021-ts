@@ -1,0 +1,39 @@
+.movie__card, .movie__card img, .movie__card_preview{
+    width: 200px;
+}
+.movie__card,.movie__card_title,.movie__card_preview {
+    flex-direction: column;
+}
+
+.movie__card {
+    align-items: center;
+    gap: 10px;
+    height: 470px;
+    box-sizing: border-box;
+}
+
+.movie__card img{
+    height: 300px;
+}
+
+.movie__card_title{
+    gap: 15px;
+    align-items: center;
+}
+
+.movie__card_title h4 {
+    height: 50px;
+}
+
+.movie__card_preview {
+    gap: 4px;
+}
+.movie__card_preview p {
+    font-size: 12px;
+}
+
+.movie__card_preview strong {
+    font-size: 13px;
+    font-weight: 300;
+}
+

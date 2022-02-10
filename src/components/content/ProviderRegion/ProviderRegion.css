@@ -1,0 +1,9 @@
+.provider__region {
+    width: 120px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.provider__region-flag {
+    font-size: 100px;
+}

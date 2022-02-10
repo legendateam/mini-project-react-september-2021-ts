@@ -3,10 +3,9 @@ import {Link} from "react-router-dom";
 import {Switch} from "@mui/material";
 
 import './Header.css';
-import Logo from "./Logo/Logo";
+import Logo from "../styles/Logo/Logo";
 
-
-const Header:FC = () => {
+const Header: FC = () => {
     const [checked, setChecked] = useState(false);
 
     const handleChange = () => {
@@ -15,24 +14,28 @@ const Header:FC = () => {
 
     return (
         <header className={'header'}>
+
             <ul className={'header__ul flex'}>
-                <li><Logo/></li>
+                <Link to={'/'}><li><Logo/></li></Link>
+
                 <li>
                     <ul className={'header__ul_child-ul flex'}>
                         <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/'}>Movies</Link></li>
+                        <li><Link to={'/movies/lists'}>Movies</Link></li>
                     </ul>
                 </li>
+
                 <li>
                     <span className={'header__ul_child-checked'}>
                         Dark theme:
-                        {!checked? 'OFF': 'ON'}
+                        {!checked ? 'OFF' : 'ON'}
                     </span>
                     <Switch
-                    checked={checked}
-                    onChange={handleChange}
-                    inputProps={{ 'aria-label': 'controlled' }}/>
+                        checked={checked}
+                        onChange={handleChange}
+                        inputProps={{'aria-label': 'controlled'}}/>
                 </li>
+
             </ul>
         </header>
     );

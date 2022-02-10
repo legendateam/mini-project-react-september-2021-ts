@@ -19,3 +19,7 @@ a {
 .background__style-dark {
     background-color: #3C3F41;
 }
+
+.reject__error {
+    color: red
+}

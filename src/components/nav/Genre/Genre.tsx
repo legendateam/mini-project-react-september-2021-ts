@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Genre = () => {
+import {IGenreComponent} from "../../../intefaces";
+
+const Genre:FC<IGenreComponent> = ({genre:{name}}) => {
     return (
-        <div>
-
-        </div>
+        <li>
+            <p><strong>{name}</strong></p>
+        </li>
     );
 };
 
