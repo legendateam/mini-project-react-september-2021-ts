@@ -21,7 +21,7 @@ const Header: FC = () => {
                 <li>
                     <ul className={'header__ul_child-ul flex'}>
                         <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/movies/lists'}>Movies</Link></li>
+                        <li><Link to={'/movies/list'}>Movies</Link></li>
                     </ul>
                 </li>
 

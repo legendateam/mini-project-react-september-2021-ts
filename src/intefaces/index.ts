@@ -10,4 +10,5 @@ export * from './sliceIntefaces/genre.interface';
 export * from './servicesIntefaces/genres.interface';
 export * from './actionsIntefaces/genresAction.interface';
 export * from './propsComponents/genreComponent.interface';
-export * from './IUseLocation'
+export * from './IUseLocation';
+export * from './actionsIntefaces/movieWitchGenre.interface'

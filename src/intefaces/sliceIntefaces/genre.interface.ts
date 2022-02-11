@@ -5,13 +5,7 @@ export interface IGenre {
 
 export interface IGenresState {
     genres: IGenre[],
+    id: number | null,
     status: string | null,
     error: string | null
 }
-
-// export interface IGenresState {
-//     genres: IGenre[],
-//     genresNames: string[],
-//     status: string | null,
-//     error: string | null
-// }

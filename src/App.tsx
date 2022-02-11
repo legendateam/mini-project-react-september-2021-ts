@@ -3,17 +3,17 @@ import {Routes} from "react-router-dom";
 import {Route} from "react-router-dom";
 
 import './App.css';
-import {Filter, HomePage, Layout, MoviesListCards, NotFoundPage} from "./components";
+import {Filter, Footer, HomePage, Layout, MoviesListCards, NotFoundPage} from "./components";
 
 const App:FC = () => {
     return (
         <div className={'background__color-white'}>
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
-                    <Route path={'/'} element={<HomePage/>}/>
+                    <Route index element={<HomePage/>}/>
                     <Route path={'movies'} element={<Filter/>}>
-                        <Route path={'lists'} element={<MoviesListCards/>}/>
-                        <Route path={'category:genres'} element={<MoviesListCards/>}/>
+                        <Route path={'list'} element={<MoviesListCards/>}/>
+                        <Route path={'list/category/:id'} element={<Footer/>}/>
                     </Route>
                     <Route path={'*'} element={<NotFoundPage/>}/>
                 </Route>

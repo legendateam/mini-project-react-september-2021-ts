@@ -6,6 +6,7 @@ import {AsyncStateEnum} from "../../enums";
 
 const initialState:IGenresState = {
     genres: [],
+    id: null,
     status: null,
     error: null
 }
@@ -29,6 +30,12 @@ const genreSlice = createSlice({
         setGenres: (state, action: PayloadAction<IGenresAction>) => {
             state.genres = action.payload.genres
         },
+        getId: (state, action:PayloadAction<string>) => {
+            const find = state.genres.find(genre => genre.name === action.payload);
+            if(find !== undefined) {
+                state.id  = find.id
+            }
+        },
         errorGenre: (state, action:PayloadAction<IError>) => {
             state.error = action.payload.error
         }
@@ -50,6 +57,6 @@ const genreSlice = createSlice({
 
 const genreReducer = genreSlice.reducer;
 
-export const {setGenres, errorGenre} = genreSlice.actions;
+export const {setGenres, errorGenre, getId} = genreSlice.actions;
 export default genreReducer;
 export {getAllGenresThunk}
