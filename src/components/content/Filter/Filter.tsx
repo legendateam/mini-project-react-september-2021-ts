@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Link, Outlet} from 'react-router-dom';
+import {Link, Outlet, useNavigate} from 'react-router-dom';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -32,6 +32,7 @@ const Filter: FC = () => {
 
     const {genres,error, status, id} = useAppSelector(state => state.genreReducer);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(()=> {
         if(!genres.length) {
@@ -48,12 +49,31 @@ const Filter: FC = () => {
     const handleClick = (e:React.ChangeEvent<HTMLInputElement>) => {
         if (!!movieName.length) {
             setChecked(e.target.checked);
-            dispatch(getId(movieName))
-            setMovieName('');
+            dispatch(getId(movieName));
+            navigate(`/movies/list/category/${movieName}`);
+            setMovieName('')
         } else if (checked) {
             setChecked(e.target.checked);
         }
     }
+
+    //  const handleClick = (e:React.ChangeEvent<HTMLInputElement>) => {
+    //     if (!!movieName.length) {
+    //         setChecked(e.target.checked);
+    //         dispatch(getId(movieName));
+    //         setMovieName('')
+    //         if(id) {
+    //             if(!category) {
+    //                 navigate(`/movies/list/category/${id.toString()}`);
+    //             }
+    //         }
+    //     } else if (checked) {
+    //         setChecked(e.target.checked);
+    //     }
+    //     // if (id && !category) {
+    //     //     navigate(`/movies/list/category/${id.toString()}`)
+    //     // }
+    // }
 
     return (
         <div className={'movies__list flex'}>
@@ -96,7 +116,11 @@ const Filter: FC = () => {
                     </Select>
                 </FormControl>
                 <Checkbox checked={checked} onChange={handleClick} inputProps={{ 'aria-label': 'controlled' }}/>
-                {id && <Link to={`list/category/${id.toString()}`} state={id}><button>go </button></Link>}
+                {/*{id && category &&*/}
+                {/*<div className={'filter__return'}>*/}
+                {/*    <Link to={'/movies/list'}><h4>Return to the list of films of different genres</h4></Link>*/}
+                {/*</div>*/}
+                {/*}*/}
             </div>
             }
 

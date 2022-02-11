@@ -13,7 +13,7 @@ const App:FC = () => {
                     <Route index element={<HomePage/>}/>
                     <Route path={'movies'} element={<Filter/>}>
                         <Route path={'list'} element={<MoviesListCards/>}/>
-                        <Route path={'list/category/:id'} element={<Footer/>}/>
+                        <Route path={'list/category/:genre'} element={<MoviesListCards/>}/>
                     </Route>
                     <Route path={'*'} element={<NotFoundPage/>}/>
                 </Route>
