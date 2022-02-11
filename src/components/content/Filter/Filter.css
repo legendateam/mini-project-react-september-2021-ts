@@ -3,13 +3,14 @@
     justify-content: end;
 }
 
-.filter__return div {
+.filter__return {
     position: absolute;
+    top: 205px;
+    right: 244px;
 }
-.filter__return a, .filter__return h4 {
-    position: relative;
-    top: 40px;
-    right: 170px;
+
+.filter__return h4:hover {
+  color: darkgrey;
 }
 
 .movies__list {
