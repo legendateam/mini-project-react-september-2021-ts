@@ -30,6 +30,7 @@
 
 .header__ul_child-checked {
     position: absolute;
-    right: 250px;
+    width: 150px;
+    right: 210px;
     top: 28px;
 }

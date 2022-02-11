@@ -30,7 +30,7 @@ const Header: FC = () => {
                         Dark theme:
                         {!checked ? 'OFF' : 'ON'}
                     </span>
-                    <Switch
+                    <Switch className={'pizda'}
                         checked={checked}
                         onChange={handleChange}
                         inputProps={{'aria-label': 'controlled'}}/>
