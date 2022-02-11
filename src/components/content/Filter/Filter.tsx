@@ -30,25 +30,25 @@ const Filter: FC = () => {
     const [movieName, setMovieName] = useState<string>('');
     const [checked, setChecked] = useState<boolean>(false);
 
-    const {genres,error, status, id} = useAppSelector(state => state.genreReducer);
+    const {genres, error, status, id} = useAppSelector(state => state.genreReducer);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const category = pathname.includes('category');
 
-    useEffect(()=> {
-        if(!genres.length) {
+    useEffect(() => {
+        if (!genres.length) {
             dispatch(getAllGenresThunk())
         }
-    },[]);
+    }, []);
 
     const handleChange = (event: SelectChangeEvent<typeof movieName>) => {
-        if(!checked) {
+        if (!checked) {
             setMovieName(event.target.value);
         }
     };
 
-    const handleClick = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!!movieName.length) {
             setChecked(e.target.checked);
             dispatch(getId(movieName));
@@ -99,7 +99,7 @@ const Filter: FC = () => {
                         ))}
                     </Select>
                 </FormControl>
-                <Checkbox checked={checked} onChange={handleClick} inputProps={{ 'aria-label': 'controlled' }}/>
+                <Checkbox checked={checked} onChange={handleClick} inputProps={{'aria-label': 'controlled'}}/>
                 {id && category &&
                 <div className={'filter__return'}>
                     <Link to={'/movies/list'}><h4>Return to the list of films of different genres</h4></Link>

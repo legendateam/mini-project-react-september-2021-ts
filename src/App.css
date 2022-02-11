@@ -3,11 +3,13 @@
     margin: 0;
     font-family: Roboto, serif;
 }
-
+body {
+    padding: 0!important;
+    overflow: visible!important;
+}
 .flex {
     display: flex;
 }
-
 a {
     text-decoration: none;
     color: #000000;
