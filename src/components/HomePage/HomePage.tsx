@@ -1,11 +1,11 @@
 import React, {FC, useEffect} from 'react';
-import {LinearProgress} from "@mui/material";
+import {LinearProgress} from '@mui/material';
 
 import './HomePage.css'
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {AsyncStateEnum} from "../../enums";
-import {ProviderRegion} from "../content/ProviderRegion/ProviderRegion";
-import {getAllProvidersRegionsThunk} from "../../store";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {AsyncStateEnum} from '../../enums';
+import {ProviderRegion} from '../content/ProviderRegion/ProviderRegion';
+import {getAllProvidersRegionsThunk} from '../../store';
 
 const HomePage:FC = () => {
     const {results,status,error} = useAppSelector(state => state.providerRegionReducer);

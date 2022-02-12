@@ -1,16 +1,16 @@
 import React, {FC, useEffect, useState} from 'react';
-import InputLabel from "@mui/material/InputLabel";
-import Select, {SelectChangeEvent} from "@mui/material/Select";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
-import Checkbox from "@mui/material/Checkbox";
-import ListItemText from "@mui/material/ListItemText";
-import FormControl from "@mui/material/FormControl";
+import InputLabel from '@mui/material/InputLabel';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import MenuItem from '@mui/material/MenuItem';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
+import FormControl from '@mui/material/FormControl';
 
-import {useAppDispatch} from "../../../hooks";
-import {moviesWitchGenre, sortMovies} from "../../../store";
-import {useLocation, useSearchParams} from "react-router-dom";
-import {IMenuProps} from "../../../intefaces";
+import {useAppDispatch} from '../../../hooks';
+import {sortMoviesWithGenre, sortMovies} from '../../../store';
+import {useLocation, useSearchParams} from 'react-router-dom';
+import {IMenuProps} from '../../../intefaces';
 
 const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
 
@@ -26,7 +26,7 @@ const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
         if (!!sort.length && !category) {
             dispatch(sortMovies({sortBy: sort}))
         } else if (!!sort.length && category) {
-            dispatch(moviesWitchGenre({sortBy: sort}))
+            dispatch(sortMoviesWithGenre({sortBy: sort}))
         }
     }, [sort]);
 

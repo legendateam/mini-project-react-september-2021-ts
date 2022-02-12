@@ -1,4 +1,4 @@
-import {IUrls} from "../intefaces";
+import {IUrls} from '../intefaces';
 
 const baseURL = 'https://api.themoviedb.org/3';
 

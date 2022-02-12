@@ -1,7 +1,7 @@
 export interface IMovies {
     movies: IResultsMovie[],
-    moviesWitchGenre: IResultsMovie[],
-    page: null | number,
+    moviesWithGenre: IResultsMovie[],
+    pageQ: null | number,
     status: null | string,
     error: null | string
 }

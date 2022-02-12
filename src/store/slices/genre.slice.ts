@@ -1,8 +1,8 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {IGenresState, IGenresAction, IError, IGenreName} from "../../intefaces";
-import {genresService} from "../../services/genres.service";
-import {AsyncStateEnum} from "../../enums";
+import {IGenresState, IGenresAction, IError, IGenreName} from '../../intefaces';
+import {genresService} from '../../services/genres.service';
+import {AsyncStateEnum} from '../../enums';
 
 const initialState:IGenresState = {
     genres: [],

@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 
 import './MovieCard.css';
-import {IMovieCardProps} from "../../../intefaces/propsComponents/movieCardProps.interface";
-import {Poster} from "../../Poster/Poster";
-import {StarRating} from "../../styles/StarsRating/StarRating";
-import {Genres} from "../../nav/Genres/Genres";
+import {IMovieCardProps} from '../../../intefaces/propsComponents/movieCardProps.interface';
+import {Poster} from '../../Poster/Poster';
+import {StarRating} from '../../styles/StarsRating/StarRating';
+import {Genres} from '../../nav/Genres/Genres';
 
 const MovieCard:FC<IMovieCardProps> = ({movie}) => {
     return (
@@ -28,10 +28,10 @@ export {MovieCard};
 // import React, {FC, useEffect, useState} from 'react';
 //
 // import './MovieCard.css';
-// import {IMovieCardProps} from "../../../intefaces/propsComponents/movieCardProps.interface";
-// import {Poster} from "../../Poster/Poster";
-// import {StarRating} from "../../styles/StarsRating/StarRating";
-// import {useAppSelector} from "../../../hooks";
+// import {IMovieCardProps} from '../../../intefaces/propsComponents/movieCardProps.interface';
+// import {Poster} from '../../Poster/Poster';
+// import {StarRating} from '../../styles/StarsRating/StarRating';
+// import {useAppSelector} from '../../../hooks';
 //
 // const MovieCard:FC<IMovieCardProps> = ({movie}) => {
 //     const {genres} = useAppSelector(state => state.genreReducer);

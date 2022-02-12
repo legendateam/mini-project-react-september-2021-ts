@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 import {IError, IProvidersRegions,IProviderRegionSliceActionsetProvidersRegions} from "../../intefaces";
 import {providersRegionsServices} from "../../services";
-import {AsyncStateEnum} from "../../enums";
+import {AsyncStateEnum} from '../../enums';
 
 const initialState:IProvidersRegions = {
     results: [],

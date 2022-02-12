@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
-import {IPoster} from "../../intefaces/propsComponents/poster.inteface";
-import {urls} from "../../configs";
+import {IPoster} from '../../intefaces/propsComponents/poster.inteface';
+import {urls} from '../../configs';
 
 const Poster:FC<IPoster> = ({poster,title}) => {
     return (

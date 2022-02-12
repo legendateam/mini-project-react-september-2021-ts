@@ -1,16 +1,16 @@
 import React, {FC,useState} from 'react';
-import {useNavigate} from "react-router-dom";
-import InputLabel from "@mui/material/InputLabel";
-import Select, {SelectChangeEvent} from "@mui/material/Select";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
-import Checkbox from "@mui/material/Checkbox";
-import ListItemText from "@mui/material/ListItemText";
-import FormControl from "@mui/material/FormControl";
+import {useNavigate} from 'react-router-dom';
+import InputLabel from '@mui/material/InputLabel';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import MenuItem from '@mui/material/MenuItem';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
+import FormControl from '@mui/material/FormControl';
 
-import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {getId} from "../../../store/slices/genre.slice";
-import {IMenuProps} from "../../../intefaces";
+import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {getId} from '../../../store/slices/genre.slice';
+import {IMenuProps} from '../../../intefaces';
 
 const SelectGenres:FC<IMenuProps> = ({MenuProps}) => {
 

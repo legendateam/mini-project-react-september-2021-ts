@@ -1,8 +1,8 @@
-import axiosInstance from "./axios.cervice";
-import {urls} from "../configs";
-import {IMovie} from "../intefaces";
+import axiosInstance from './axios.cervice';
+import {urls} from '../configs';
+import {IMovie} from '../intefaces';
 
-import {QueryParamsEnum} from "../enums";
+import {QueryParamsEnum} from '../enums';
 
 const moviesService = {
     getAll: ()=> axiosInstance.get<IMovie>(`${urls.discover}${urls.movie}${urls.key}`),

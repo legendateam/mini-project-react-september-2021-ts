@@ -5,7 +5,7 @@ import {useAppSelector} from "../../../hooks";
 import {Genre} from "../Genre/Genre";
 import {IMovieCardProps} from "../../../intefaces/propsComponents/movieCardProps.interface";
 import {IGenre} from "../../../intefaces";
-import {AsyncStateEnum} from "../../../enums";
+import {AsyncStateEnum} from '../../../enums';
 
 const Genres: FC<IMovieCardProps> = ({movie}) => {
     const {genres,error,status} = useAppSelector(state => state.genreReducer);

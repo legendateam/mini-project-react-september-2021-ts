@@ -1,13 +1,13 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {IError, IMovies, IAllMovies, ISortBy} from "../../intefaces";
+import {IError, IMovies, IAllMovies, ISortBy,IPage} from '../../intefaces';
 import {moviesService} from '../../services';
 import {AsyncStateEnum} from '../../enums';
 
 const initialState:IMovies = {
     movies: [],
-    moviesWitchGenre: [],
-    page: null,
+    moviesWithGenre: [],
+    pageQ: null,
     status: null,
     error: null
 }
@@ -24,20 +24,20 @@ const getAllMoviesThunk = createAsyncThunk(
       }
 );
 
-const getMoviesWitchGenreThunk = createAsyncThunk<void,number>(
+const getMoviesWithGenreThunk = createAsyncThunk<void,number>(
     'moviesSlice,getAllMoviesThunk',
     async (id, {dispatch,rejectWithValue}) => {
         try {
             const {data} = await moviesService.getListWithGenre(id);
-            dispatch(getMoviesWitchGenre({movies: data.results}))
+            dispatch(getMoviesWithGenre({movies: data.results}))
         } catch (e) {
             return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
         }
     }
 );
 
-const getMoviesPaginationThunk = createAsyncThunk<void,number>(
-    'moviesSlice/getMoviesPaginationThunk',
+const getAllMoviesPaginationThunk = createAsyncThunk<void,number>(
+    'moviesSlice/getAllMoviesPaginationThunk',
     async(id, {dispatch,rejectWithValue}) => {
         try {
             const {data} = await moviesService.getAllWithPage(id);
@@ -49,11 +49,11 @@ const getMoviesPaginationThunk = createAsyncThunk<void,number>(
 );
 
 const getMoviesWithGenrePaginationThunk = createAsyncThunk<void, { genre:number, page: number }>(
-    'moviesSlice/getMoviesPaginationThunk',
+    'moviesSlice/getMoviesWithGenrePaginationThunk',
     async({genre,page}, {dispatch,rejectWithValue}) => {
         try {
             const {data} = await moviesService.getWithGenreAndPage(genre, page);
-            dispatch(getMoviesWitchGenre({movies:data.results}))
+            dispatch(getMoviesWithGenre({movies:data.results}))
         } catch (e) {
             return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
         }
@@ -67,8 +67,8 @@ const moviesSlice = createSlice({
         getAllMovies: (state, action:PayloadAction<IAllMovies>) => {
             state.movies = action.payload.movies
         },
-        getMoviesWitchGenre: (state, action:PayloadAction<IAllMovies>) => {
-            state.moviesWitchGenre = action.payload.movies
+        getMoviesWithGenre: (state, action:PayloadAction<IAllMovies>) => {
+            state.moviesWithGenre = action.payload.movies
         },
         sortMovies: (state, action:PayloadAction<ISortBy>) => {
             switch (action.payload.sortBy) {
@@ -102,7 +102,7 @@ const moviesSlice = createSlice({
                     state.movies = []
             }
         },
-        moviesWitchGenre: (state, action:PayloadAction<ISortBy>) => {
+        sortMoviesWithGenre: (state, action:PayloadAction<ISortBy>) => {
             switch (action.payload.sortBy) {
                 case 'A-Z':
                     const sortMoviesAz = state.movies.sort((a,b) => {
@@ -111,7 +111,7 @@ const moviesSlice = createSlice({
                         }
                         return 1
                     });
-                    state.moviesWitchGenre  = sortMoviesAz;
+                    state.moviesWithGenre  = sortMoviesAz;
                     break;
                 case 'Z-A':
                     const sortMoviesZa = state.movies.sort((a,b) => {
@@ -120,19 +120,22 @@ const moviesSlice = createSlice({
                         }
                         return 1
                     });
-                    state.moviesWitchGenre  = sortMoviesZa;
+                    state.moviesWithGenre  = sortMoviesZa;
                     break;
                 case 'Top Popular':
                     const sortPopular = state.movies.sort((a,b) => b.vote_average - a.vote_average)
-                    state.moviesWitchGenre = sortPopular;
+                    state.moviesWithGenre = sortPopular;
                     break;
                 case 'Useless':
                     const sortUseless = state.movies.sort((a, b) => a.vote_average - b.vote_average);
-                    state.moviesWitchGenre = sortUseless;
+                    state.moviesWithGenre = sortUseless;
                     break;
                 default :
-                    state.moviesWitchGenre = []
+                    state.moviesWithGenre = []
             }
+        },
+        addPage: (state, action:PayloadAction<IPage>) => {
+            state.pageQ = action.payload.page
         },
         rejectMovie: (state, action:PayloadAction<IError>) => {
             state.error = action.payload.error
@@ -151,27 +154,27 @@ const moviesSlice = createSlice({
             state.status = AsyncStateEnum.rejected
         });
 
-        builder.addCase(getMoviesWitchGenreThunk.pending, state => {
+        builder.addCase(getMoviesWithGenreThunk.pending, state => {
             state.status = AsyncStateEnum.pending;
             state.error = null
         });
-        builder.addCase(getMoviesWitchGenreThunk.fulfilled, state => {
+        builder.addCase(getMoviesWithGenreThunk.fulfilled, state => {
             state.status = AsyncStateEnum.fulfilled;
             state.error = null
         });
-        builder.addCase(getMoviesWitchGenreThunk.rejected, state => {
+        builder.addCase(getMoviesWithGenreThunk.rejected, state => {
             state.status = AsyncStateEnum.rejected
         });
 
-        builder.addCase(getMoviesPaginationThunk.pending, state => {
+        builder.addCase(getAllMoviesPaginationThunk.pending, state => {
             state.status = AsyncStateEnum.pending;
             state.error = null
         });
-        builder.addCase(getMoviesWitchGenreThunk.fulfilled, state => {
+        builder.addCase(getAllMoviesPaginationThunk.fulfilled, state => {
             state.status = AsyncStateEnum.fulfilled;
             state.error = null
         });
-        builder.addCase(getMoviesWitchGenreThunk.rejected, state => {
+        builder.addCase(getAllMoviesPaginationThunk.rejected, state => {
             state.status = AsyncStateEnum.rejected
         });
 
@@ -190,7 +193,7 @@ const moviesSlice = createSlice({
 });
 
 const moviesReducer = moviesSlice.reducer;
-export const {rejectMovie,moviesWitchGenre,sortMovies,getAllMovies,getMoviesWitchGenre} = moviesSlice.actions;
+export const {rejectMovie,sortMoviesWithGenre,sortMovies,getAllMovies,getMoviesWithGenre,addPage} = moviesSlice.actions;
 
 export default moviesReducer;
-export {getAllMoviesThunk,getMoviesWitchGenreThunk,getMoviesPaginationThunk,getMoviesWithGenrePaginationThunk}
+export {getAllMoviesThunk,getMoviesWithGenreThunk,getAllMoviesPaginationThunk,getMoviesWithGenrePaginationThunk}

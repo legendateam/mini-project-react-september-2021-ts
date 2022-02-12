@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {IInitialStateArrowTop} from "../../intefaces";
+import {IInitialStateArrowTop} from '../../intefaces';
 
 const initialState:IInitialStateArrowTop = {
     showArrow: false

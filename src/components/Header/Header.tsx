@@ -1,9 +1,9 @@
 import React, {FC, useState} from 'react';
-import {Link} from "react-router-dom";
-import {Switch} from "@mui/material";
+import {Link} from 'react-router-dom';
+import {Switch} from '@mui/material';
 
 import './Header.css';
-import Logo from "../styles/Logo/Logo";
+import Logo from '../styles/Logo/Logo';
 
 const Header: FC = () => {
     const [checked, setChecked] = useState(false);

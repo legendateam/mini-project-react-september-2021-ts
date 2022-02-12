@@ -12,4 +12,5 @@ export * from './actionsIntefaces/genresAction.interface';
 export * from './propsComponents/genreComponent.interface';
 export * from './IUseLocation';
 export * from './actionsIntefaces/movieWitchGenre.interface';
-export * from './propsComponents/propsSelect.interface'
+export * from './propsComponents/propsSelect.interface';
+export * from './actionsIntefaces/pagePagination.interface'

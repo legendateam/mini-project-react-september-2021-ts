@@ -1,4 +1,4 @@
-import {IGenre} from "../sliceIntefaces/genre.interface";
+import {IGenre} from '../sliceIntefaces/genre.interface';
 
 export interface IGenreComponent {
     genre: IGenre

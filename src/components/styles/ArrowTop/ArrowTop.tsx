@@ -1,9 +1,9 @@
 import React, {FC, useEffect} from 'react';
 
-import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 
 import './ArrowTop.css'
-import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {useAppDispatch, useAppSelector} from '../../../hooks';
 import { changeState } from '../../../store';
 
 

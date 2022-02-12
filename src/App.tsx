@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import {Routes} from "react-router-dom";
-import {Route} from "react-router-dom";
+import {Routes} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 import './App.css';
-import {Filter, Footer, HomePage, Layout, MoviesListCards, NotFoundPage} from "./components";
+import {Filter, Footer, HomePage, Layout, MoviesListCards, NotFoundPage} from './components';
 
 const App:FC = () => {
     return (
@@ -26,11 +26,11 @@ export default App;
 
 
 // import React, {FC} from 'react';
-// import {Routes} from "react-router-dom";
-// import {Route} from "react-router-dom";
+// import {Routes} from 'react-router-dom';
+// import {Route} from 'react-router-dom';
 //
 // import './App.css';
-// import {HomePage, Layout, MoviesListCards, NotFoundPage} from "./components";
+// import {HomePage, Layout, MoviesListCards, NotFoundPage} from './components';
 //
 // const App:FC = () => {
 //     return (
