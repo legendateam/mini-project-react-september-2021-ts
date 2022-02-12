@@ -14,4 +14,6 @@ export * from './styles/ArrowTop/ArrowTop';
 export * from './styles/StarsRating/StarRating';
 export * from './styles/Logo/Logo';
 export * from './Poster/Poster';
-export * from './content/Filter/Filter'
+export * from './content/Filter/Filter';
+export * from './content/SelectGenres/SelectGenres';
+export * from './content/SelectSort/SelectSort'

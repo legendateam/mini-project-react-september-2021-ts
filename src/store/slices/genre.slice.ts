@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-import {IGenresState, IGenresAction, IError} from "../../intefaces";
+import {IGenresState, IGenresAction, IError, IGenreName} from "../../intefaces";
 import {genresService} from "../../services/genres.service";
 import {AsyncStateEnum} from "../../enums";
 
@@ -30,8 +30,8 @@ const genreSlice = createSlice({
         setGenres: (state, action: PayloadAction<IGenresAction>) => {
             state.genres = action.payload.genres
         },
-        getId: (state, action:PayloadAction<string>) => {
-            const find = state.genres.find(genre => genre.name === action.payload);
+        getId: (state, action:PayloadAction<IGenreName>) => {
+            const find = state.genres.find(genre => genre.name === action.payload.genreName);
             if(find !== undefined) {
                 state.id  = find.id
             }

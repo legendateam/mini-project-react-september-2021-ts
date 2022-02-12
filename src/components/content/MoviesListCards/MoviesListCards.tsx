@@ -8,9 +8,9 @@ import {getAllMoviesThunk, getMoviesWitchGenreThunk} from "../../../store";
 import {MovieCard} from "../MovieCard/MovieCard";
 import {AsyncStateEnum} from "../../../enums";
 
-
 const MoviesListCards:FC = () => {
     const {movies,status,error,moviesWitchGenre} = useAppSelector(state => state.moviesReducer);
+    const {genres} = useAppSelector( state => state.genreReducer )
     const {id} = useAppSelector(state => state.genreReducer);
 
     const dispatch = useAppDispatch();
@@ -24,8 +24,13 @@ const MoviesListCards:FC = () => {
         }
         if(id && category) {
             dispatch(getMoviesWitchGenreThunk(id))
+        } else if (!id && category && genres.length) {
+            const find = genres.find(genre => pathname.includes(`${genre.name}`) );
+            if(find?.id) {
+                dispatch(getMoviesWitchGenreThunk(find.id))
+            }
         }
-    },[id])
+    },[id,genres])
 
     return (
         <>

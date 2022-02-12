@@ -11,4 +11,5 @@ export * from './servicesIntefaces/genres.interface';
 export * from './actionsIntefaces/genresAction.interface';
 export * from './propsComponents/genreComponent.interface';
 export * from './IUseLocation';
-export * from './actionsIntefaces/movieWitchGenre.interface'
+export * from './actionsIntefaces/movieWitchGenre.interface';
+export * from './propsComponents/propsSelect.interface'

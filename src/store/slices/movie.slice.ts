@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-import {IError, IMovies,IAllMovies} from "../../intefaces";
+import {IError, IMovies, IAllMovies, ISortBy} from "../../intefaces";
 import {moviesService} from "../../services";
 import {AsyncStateEnum} from "../../enums";
 
@@ -45,6 +45,70 @@ const moviesSlice = createSlice({
         getMoviesWitchGenre: (state, action:PayloadAction<IAllMovies>) => {
             state.moviesWitchGenre = action.payload.movies
         },
+        sortMovies: (state, action:PayloadAction<ISortBy>) => {
+            switch (action.payload.sortBy) {
+                case 'A-Z':
+                    const sortMoviesAz = state.movies.sort((a,b) => {
+                                if(b.title > a.title) {
+                                    return -1
+                                }
+                                return 1
+                            });
+                    state.movies  = sortMoviesAz;
+                    break;
+                case 'Z-A':
+                    const sortMoviesZa = state.movies.sort((a,b) => {
+                        if(a.title > b.title) {
+                            return -1
+                        }
+                        return 1
+                    });
+                    state.movies  = sortMoviesZa;
+                    break;
+                case 'Top Popular':
+                    const sortPopular = state.movies.sort((a,b) => b.vote_average - a.vote_average)
+                    state.movies  = sortPopular;
+                    break;
+                case 'Useless':
+                    const sortUseless = state.movies.sort((a, b) => a.vote_average - b.vote_average);
+                    state.movies  = sortUseless;
+                    break;
+                default :
+                    state.movies = []
+            }
+        },
+        moviesWitchGenre: (state, action:PayloadAction<ISortBy>) => {
+            switch (action.payload.sortBy) {
+                case 'A-Z':
+                    const sortMoviesAz = state.movies.sort((a,b) => {
+                        if(b.title > a.title) {
+                            return -1
+                        }
+                        return 1
+                    });
+                    state.moviesWitchGenre  = sortMoviesAz;
+                    break;
+                case 'Z-A':
+                    const sortMoviesZa = state.movies.sort((a,b) => {
+                        if(a.title > b.title) {
+                            return -1
+                        }
+                        return 1
+                    });
+                    state.moviesWitchGenre  = sortMoviesZa;
+                    break;
+                case 'Top Popular':
+                    const sortPopular = state.movies.sort((a,b) => b.vote_average - a.vote_average)
+                    state.moviesWitchGenre = sortPopular;
+                    break;
+                case 'Useless':
+                    const sortUseless = state.movies.sort((a, b) => a.vote_average - b.vote_average);
+                    state.moviesWitchGenre = sortUseless;
+                    break;
+                default :
+                    state.moviesWitchGenre = []
+            }
+        },
         rejectMovie: (state, action:PayloadAction<IError>) => {
             state.error = action.payload.error
         }
@@ -77,7 +141,7 @@ const moviesSlice = createSlice({
 });
 
 const moviesReducer = moviesSlice.reducer;
-export const {rejectMovie, getAllMovies,getMoviesWitchGenre} = moviesSlice.actions;
+export const {rejectMovie,moviesWitchGenre,sortMovies,getAllMovies,getMoviesWitchGenre} = moviesSlice.actions;
 
 export default moviesReducer;
 export {getAllMoviesThunk,getMoviesWitchGenreThunk}
