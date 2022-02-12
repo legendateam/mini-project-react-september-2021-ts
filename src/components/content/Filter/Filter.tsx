@@ -25,6 +25,7 @@ const MenuProps:IPropsSelect = {
 const Filter: FC = () => {
 
     const {genres, error, status, id} = useAppSelector(state => state.genreReducer);
+    const {movies} = useAppSelector(state => state.moviesReducer);
 
     const dispatch = useAppDispatch();
     const {pathname} = useLocation();
@@ -45,7 +46,7 @@ const Filter: FC = () => {
             <div className={'filter flex'}>
                 <SelectSort MenuProps={MenuProps}/>
                 <SelectGenres MenuProps={MenuProps}/>
-                {id && category &&
+                {id && category && !!movies.length &&
                 <div className={'filter__return'}>
                     <Link to={'/movies/list'}><h4>Return to the list of films of different genres</h4></Link>
                 </div>

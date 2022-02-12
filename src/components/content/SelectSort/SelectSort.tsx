@@ -7,33 +7,69 @@ import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
 import FormControl from '@mui/material/FormControl';
 
-import {useAppDispatch} from '../../../hooks';
+import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {sortMoviesWithGenre, sortMovies} from '../../../store';
 import {useLocation, useSearchParams} from 'react-router-dom';
 import {IMenuProps} from '../../../intefaces';
 
 const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
 
+    const {pageQ} = useAppSelector(state => state.moviesReducer);
+    const {movies,moviesWithGenre} = useAppSelector(state => state.moviesReducer);
+
     const dispatch = useAppDispatch();
     const [query, setQuery] = useSearchParams();
     const {pathname} = useLocation();
+
     const category = pathname.includes('category');
+    const sortQuery = query.get('sort');
 
     const [sort, setSort] = useState<string>('');
-    const menuSort: string[] = ['A-Z', 'Z-A', 'Top Popular', 'Useless'];
 
+    const menuSort: string[] = ['A-Z', 'Z-A', 'Top Popular', 'Useless'];
     useEffect(() => {
         if (!!sort.length && !category) {
             dispatch(sortMovies({sortBy: sort}))
-        } else if (!!sort.length && category) {
-            dispatch(sortMoviesWithGenre({sortBy: sort}))
+            console.log('aaaaaaaaaaaaaaaaaa')
+        } else if (!!sort.length && !category && pageQ) {
+            dispatch(sortMovies({sortBy: sort}))
+            console.log('dupa')
         }
-    }, [sort]);
+
+        if (!!sort.length && category) {
+            dispatch(sortMoviesWithGenre({sortBy: sort}))
+            console.log('bbbbbbbbbbbbbbb')
+        } else if (!!sort.length && category && pageQ) {
+            dispatch(sortMoviesWithGenre({sortBy: sort}))
+            console.log('pizda')
+        }
+
+        if(!movies.length && !category && !sort.length && sortQuery) {
+            setSort(sortQuery)
+            dispatch(sortMovies({sortBy: sort}))
+            console.log('eeeeeeeeeeeeeeee')
+        } else if(!moviesWithGenre.length && category && !sort.length && sortQuery) {
+            setSort(sortQuery)
+            dispatch(sortMoviesWithGenre({sortBy: sort}))
+            console.log('ddddddddddddddddddddd')
+        }
+        if(!sort.length && !category && sortQuery) {
+            dispatch(sortMovies({sortBy: sortQuery}))
+        } else if (!sort.length && category && sortQuery) {
+            dispatch(sortMoviesWithGenre({sortBy: sortQuery}))
+        }
+    }, [sort,movies,moviesWithGenre]);
 
     const handleChangeSort = (event: SelectChangeEvent<string>) => {
         setSort(event.target.value);
-        setQuery({sort:event.target.value})
+        if(!pageQ){
+            setQuery({sort:event.target.value})
+        }
+        if(pageQ) {
+            setQuery({page:pageQ.toString(), sort:event.target.value})
+        }
     };
+    console.log(sortQuery);
 
     return (
         <FormControl sx={{m: 1, width: 150}}>

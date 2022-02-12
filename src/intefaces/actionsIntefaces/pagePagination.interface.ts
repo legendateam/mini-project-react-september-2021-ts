@@ -1,3 +1,3 @@
 export interface IPage {
-    page:number
+    page:number|null
 }

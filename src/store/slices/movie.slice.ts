@@ -105,7 +105,7 @@ const moviesSlice = createSlice({
         sortMoviesWithGenre: (state, action:PayloadAction<ISortBy>) => {
             switch (action.payload.sortBy) {
                 case 'A-Z':
-                    const sortMoviesAz = state.movies.sort((a,b) => {
+                    const sortMoviesAz = state.moviesWithGenre.sort((a,b) => {
                         if(b.title > a.title) {
                             return -1
                         }
@@ -114,7 +114,7 @@ const moviesSlice = createSlice({
                     state.moviesWithGenre  = sortMoviesAz;
                     break;
                 case 'Z-A':
-                    const sortMoviesZa = state.movies.sort((a,b) => {
+                    const sortMoviesZa = state.moviesWithGenre.sort((a,b) => {
                         if(a.title > b.title) {
                             return -1
                         }
@@ -123,11 +123,11 @@ const moviesSlice = createSlice({
                     state.moviesWithGenre  = sortMoviesZa;
                     break;
                 case 'Top Popular':
-                    const sortPopular = state.movies.sort((a,b) => b.vote_average - a.vote_average)
+                    const sortPopular = state.moviesWithGenre.sort((a,b) => b.vote_average - a.vote_average)
                     state.moviesWithGenre = sortPopular;
                     break;
                 case 'Useless':
-                    const sortUseless = state.movies.sort((a, b) => a.vote_average - b.vote_average);
+                    const sortUseless = state.moviesWithGenre.sort((a, b) => a.vote_average - b.vote_average);
                     state.moviesWithGenre = sortUseless;
                     break;
                 default :
