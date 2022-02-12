@@ -26,7 +26,6 @@ const Filter: FC = () => {
     const {genres, error, status, id} = useAppSelector(state => state.genreReducer);
 
     const dispatch = useAppDispatch();
-
     const {pathname} = useLocation();
     const category = pathname.includes('category');
 

@@ -9,13 +9,13 @@ import FormControl from "@mui/material/FormControl";
 
 import {useAppDispatch} from "../../../hooks";
 import {moviesWitchGenre, sortMovies} from "../../../store";
-import {useLocation} from "react-router-dom";
+import {useLocation, useSearchParams} from "react-router-dom";
 import {IMenuProps} from "../../../intefaces";
-
 
 const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
 
     const dispatch = useAppDispatch();
+    const [query, setQuery] = useSearchParams();
     const {pathname} = useLocation();
     const category = pathname.includes('category');
 
@@ -32,6 +32,7 @@ const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
 
     const handleChangeSort = (event: SelectChangeEvent<string>) => {
         setSort(event.target.value);
+        setQuery({sort:event.target.value})
     };
 
     return (
