@@ -1,14 +1,15 @@
 import React, {FC, useEffect} from 'react';
 import {Link, Outlet, useLocation} from 'react-router-dom';
-import {LinearProgress} from "@mui/material";
+import {LinearProgress} from '@mui/material';
 
 import './Filter.css'
-import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {getAllGenresThunk} from "../../../store/slices/genre.slice";
-import {AsyncStateEnum} from "../../../enums";
-import {SelectGenres} from "../SelectGenres/SelectGenres";
-import {SelectSort} from "../SelectSort/SelectSort";
-import {IPropsSelect} from "../../../intefaces";
+import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {getAllGenresThunk} from '../../../store/slices/genre.slice';
+import {AsyncStateEnum} from '../../../enums';
+import {IPropsSelect} from '../../../intefaces';
+import {SelectSort} from '../SelectSort/SelectSort';
+import {SelectGenres} from '../SelectGenres/SelectGenres';
+import {PaginationPage} from '../../PaginationPage/PaginationPage'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -51,6 +52,7 @@ const Filter: FC = () => {
                 }
             </div>
             }
+            <PaginationPage/>
             <Outlet/>
         </div>
     );
@@ -73,17 +75,17 @@ export {Filter}
 // // import ListItemText from '@mui/material/ListItemText';
 // // import Select, {SelectChangeEvent} from '@mui/material/Select';
 // // import Checkbox from '@mui/material/Checkbox';
-// import {LinearProgress} from "@mui/material";
+// import {LinearProgress} from '@mui/material';
 //
 // import './Filter.css'
-// import {useAppDispatch, useAppSelector} from "../../../hooks";
-// import {getAllGenresThunk} from "../../../store/slices/genre.slice";
-// // import {getAllGenresThunk, getId} from "../../../store/slices/genre.slice";
-// import {AsyncStateEnum} from "../../../enums";
-// // import {moviesWitchGenre, sortMovies} from "../../../store";
-// import {SelectGenres} from "../SelectGenres/SelectGenres";
-// import {SelectSort} from "../SelectSort/SelectSort";
-// import {IPropsSelect} from "../../../intefaces/propsComponents/propsSelect.interface";
+// import {useAppDispatch, useAppSelector} from '../../../hooks';
+// import {getAllGenresThunk} from '../../../store/slices/genre.slice';
+// // import {getAllGenresThunk, getId} from '../../../store/slices/genre.slice';
+// import {AsyncStateEnum} from '../../../enums';
+// // import {moviesWitchGenre, sortMovies} from '../../../store';
+// import {SelectGenres} from '../SelectGenres/SelectGenres';
+// import {SelectSort} from '../SelectSort/SelectSort';
+// import {IPropsSelect} from '../../../intefaces/propsComponents/propsSelect.interface';
 //
 // const ITEM_HEIGHT = 48;
 // const ITEM_PADDING_TOP = 8;

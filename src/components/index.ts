@@ -16,4 +16,5 @@ export * from './styles/Logo/Logo';
 export * from './Poster/Poster';
 export * from './content/Filter/Filter';
 export * from './content/SelectGenres/SelectGenres';
-export * from './content/SelectSort/SelectSort'
+export * from './content/SelectSort/SelectSort';
+export * from './PaginationPage/PaginationPage'

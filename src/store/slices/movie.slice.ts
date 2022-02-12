@@ -1,12 +1,13 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import {IError, IMovies, IAllMovies, ISortBy} from "../../intefaces";
-import {moviesService} from "../../services";
-import {AsyncStateEnum} from "../../enums";
+import {moviesService} from '../../services';
+import {AsyncStateEnum} from '../../enums';
 
 const initialState:IMovies = {
     movies: [],
     moviesWitchGenre: [],
+    page: null,
     status: null,
     error: null
 }
@@ -29,6 +30,30 @@ const getMoviesWitchGenreThunk = createAsyncThunk<void,number>(
         try {
             const {data} = await moviesService.getListWithGenre(id);
             dispatch(getMoviesWitchGenre({movies: data.results}))
+        } catch (e) {
+            return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
+        }
+    }
+);
+
+const getMoviesPaginationThunk = createAsyncThunk<void,number>(
+    'moviesSlice/getMoviesPaginationThunk',
+    async(id, {dispatch,rejectWithValue}) => {
+        try {
+            const {data} = await moviesService.getAllWithPage(id);
+            dispatch(getAllMovies({movies:data.results}))
+        } catch (e) {
+            return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
+        }
+    }
+);
+
+const getMoviesWithGenrePaginationThunk = createAsyncThunk<void, { genre:number, page: number }>(
+    'moviesSlice/getMoviesPaginationThunk',
+    async({genre,page}, {dispatch,rejectWithValue}) => {
+        try {
+            const {data} = await moviesService.getWithGenreAndPage(genre, page);
+            dispatch(getMoviesWitchGenre({movies:data.results}))
         } catch (e) {
             return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
         }
@@ -137,6 +162,30 @@ const moviesSlice = createSlice({
         builder.addCase(getMoviesWitchGenreThunk.rejected, state => {
             state.status = AsyncStateEnum.rejected
         });
+
+        builder.addCase(getMoviesPaginationThunk.pending, state => {
+            state.status = AsyncStateEnum.pending;
+            state.error = null
+        });
+        builder.addCase(getMoviesWitchGenreThunk.fulfilled, state => {
+            state.status = AsyncStateEnum.fulfilled;
+            state.error = null
+        });
+        builder.addCase(getMoviesWitchGenreThunk.rejected, state => {
+            state.status = AsyncStateEnum.rejected
+        });
+
+        builder.addCase(getMoviesWithGenrePaginationThunk.pending, state => {
+            state.status = AsyncStateEnum.pending;
+            state.error = null
+        });
+        builder.addCase(getMoviesWithGenrePaginationThunk.fulfilled, state => {
+            state.status = AsyncStateEnum.fulfilled;
+            state.error = null
+        });
+        builder.addCase(getMoviesWithGenrePaginationThunk.rejected, state => {
+            state.status = AsyncStateEnum.rejected
+        });
     }
 });
 
@@ -144,4 +193,4 @@ const moviesReducer = moviesSlice.reducer;
 export const {rejectMovie,moviesWitchGenre,sortMovies,getAllMovies,getMoviesWitchGenre} = moviesSlice.actions;
 
 export default moviesReducer;
-export {getAllMoviesThunk,getMoviesWitchGenreThunk}
+export {getAllMoviesThunk,getMoviesWitchGenreThunk,getMoviesPaginationThunk,getMoviesWithGenrePaginationThunk}
