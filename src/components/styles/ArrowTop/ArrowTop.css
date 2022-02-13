@@ -4,6 +4,9 @@
     bottom: 20px;
     right: 100px;
 }
+.wrap_arrow {
+    font-size: 80px;
+}
 
 .back-to-top:hover {
     color: cornflowerblue;

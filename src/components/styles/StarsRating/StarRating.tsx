@@ -3,7 +3,9 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-const StarRating:FC<{ rating : number }> = ({rating}) => {
+import {IRatingProps} from "../../../intefaces";
+
+const StarRating:FC<IRatingProps> = ({rating}) => {
     return (
         <div>
             <Box

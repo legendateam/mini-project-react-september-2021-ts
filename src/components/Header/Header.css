@@ -27,6 +27,12 @@
 .header a:hover {
   color: darkgrey;
 }
+.night__header a{
+    color: #FFFFFF;
+}
+.night__header a:hover {
+    color: #f8c487;
+}
 
 .header__ul_child-checked {
     position: absolute;

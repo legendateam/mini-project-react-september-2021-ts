@@ -3,6 +3,7 @@ export interface IMovies {
     moviesWithGenre: IResultsMovie[],
     movieDetail: IMovieDetail | null,
     pageQ: null | number,
+    movie: IResultsMovie | null,
     id: null | number,
     status: null | string,
     error: null | string
@@ -49,20 +50,8 @@ export interface IMovieDetail {
     overview:  string
     popularity: number,
     poster_path: string,
-    production_companies: [
-        {
-            id: number
-            logo_path: string,
-            name: string,
-            origin_country: string
-        },
-    ],
-    production_countries: [
-        {
-            iso_3166_1: string,
-            name: string
-        }
-    ],
+    production_companies: ICompany [],
+    production_countries: ICountry[],
     release_date: string,
     revenue: number,
     runtime: number,
@@ -78,6 +67,34 @@ export interface IMovieDetail {
     title: string,
     video: boolean,
     vote_average: number,
-    vote_count:number
+    vote_count:number,
+    videos: {
+    results: IVideos[]
+    }
+}
+
+export interface ICompany {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string
+}
+
+export interface ICountry {
+    iso_3166_1:string,
+    name: string
+}
+
+export interface IVideos{
+    iso_639_1: string,
+    iso_3166_1: string,
+    name: string,
+    key: string,
+    published_at: string,
+    site: string,
+    size: number,
+    type: string,
+    official: boolean,
+    id: string
 }
 

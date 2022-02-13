@@ -1,4 +1,4 @@
-import axiosInstance from './axios.cervice';
+import axiosInstance from './axios.service';
 import {urls} from '../configs';
 import {IMovie, IMovieDetail} from '../intefaces';
 

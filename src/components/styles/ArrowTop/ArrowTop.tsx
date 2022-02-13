@@ -6,7 +6,6 @@ import './ArrowTop.css'
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import { changeState } from '../../../store';
 
-
 const ArrowTop:FC = () => {
     const {showArrow} = useAppSelector(state => state.arrowReducer);
     const dispatch = useAppDispatch();
@@ -30,9 +29,9 @@ const ArrowTop:FC = () => {
     };
 
     return (
-        <>
-            {showArrow && <ArrowCircleUpIcon className={'back-to-top'} fontSize={'large'} onClick={scrollToTop}/>}
-        </>
+        <div className={'wrap_arrow'}>
+            {showArrow && <ArrowCircleUpIcon className={'back-to-top'} fontSize={'inherit'} onClick={scrollToTop}/>}
+        </div>
     );
 };
 

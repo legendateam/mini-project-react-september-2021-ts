@@ -7,16 +7,18 @@ import {
     ISortBy,
     IPage,
     IMovieDetailAction,
-    IGetMoviesWithGenrePagination, IResultsMovie,
+    IGetMoviesWithGenrePagination,
 } from '../../intefaces';
 import {moviesService} from '../../services';
 import {AsyncStateEnum} from '../../enums';
+import {IMovieCardProps} from "../../intefaces/propsComponents/movieCardProps.interface";
 
 const initialState:IMovies = {
     movies: [],
     moviesWithGenre: [],
     movieDetail: null,
     id: null,
+    movie: null,
     pageQ: null,
     status: null,
     error: null
@@ -156,6 +158,9 @@ const moviesSlice = createSlice({
                     state.moviesWithGenre = []
             }
         },
+        setMovie: (state, action:PayloadAction<IMovieCardProps>) => {
+            state.movie = action.payload.movie
+        },
         addPage: (state, action:PayloadAction<IPage>) => {
             state.pageQ = action.payload.page
         },
@@ -233,7 +238,7 @@ const moviesSlice = createSlice({
 });
 
 const moviesReducer = moviesSlice.reducer;
-export const {rejectMovie,sortMoviesWithGenre,sortMovies,getAllMovies,setIdDetail,getMoviesWithGenre,addPage,getMovieDetails} = moviesSlice.actions;
+export const {rejectMovie,sortMoviesWithGenre,setMovie,sortMovies,getAllMovies,setIdDetail,getMoviesWithGenre,addPage,getMovieDetails} = moviesSlice.actions;
 
 export default moviesReducer;
 export {getAllMoviesThunk,getMoviesWithGenreThunk,getAllMoviesPaginationThunk,getMoviesWithGenrePaginationThunk,getMovieDetailsThunk}

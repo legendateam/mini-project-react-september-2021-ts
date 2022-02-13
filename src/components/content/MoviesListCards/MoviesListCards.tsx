@@ -44,14 +44,6 @@ const MoviesListCards:FC = () => {
                 return
             }
 
-            // if (!!movies.length && pageQ) {
-            //     dispatch(getAllMoviesPaginationThunk(pageQ))
-            //     console.log('dfdsfsdf')
-            // } else if(!movies.length && pageQ) {
-            //     dispatch(getAllMoviesPaginationThunk(pageQ))
-            //     console.log('dfdsfsdf')
-            // }
-
            if(!movies.length && pageQ && !moviesWithGenre.length) {
                 dispatch(getAllMoviesPaginationThunk(pageQ))
                console.log('case 5')
@@ -67,75 +59,6 @@ const MoviesListCards:FC = () => {
             }
         }
 
-        // if(!movies.length && !category && !pageQ) {
-        //     dispatch(getAllMoviesThunk());
-        // } else if (!!movies.length && !!results.length && !pageQ && !category) {
-        //     dispatch(getAllMoviesThunk())
-        // }  else if (!!movies.length && !!moviesWithGenre.length && !category) {
-        //     dispatch(getAllMoviesThunk())
-        //     return
-        // }
-        //
-        // if (!!movies.length && pageQ && !category) {
-        //     dispatch(getAllMoviesPaginationThunk(pageQ))
-        // } else if(!movies.length && !category && pageQ) {
-        //     dispatch(getAllMoviesPaginationThunk(pageQ))
-        // }
-        // if(!movies.length && !category) {
-        //     dispatch(getAllMoviesThunk());
-        //     return
-        // }
-        //
-        // if (!!movies.length && !category && pageQuery !==1 && pageQ) {
-        //     dispatch(getAllMoviesPaginationThunk(pageQ))
-        // } else if(!!movies.length && !category && pageQ === 1) {
-        //     return
-        // }
-        //
-        // if(!movies.length && !category && pageQ) {
-        //     dispatch(getAllMoviesPaginationThunk(pageQ))
-        //     return
-        // }
-        //
-        // if(id && category) {
-        //     dispatch(getMoviesWithGenreThunk(id))
-        // } else if (!id && category && genres.length) {
-        //     const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //     if(find?.id) {
-        //         dispatch(getMoviesWithGenreThunk(find.id))
-        //     }
-        // } else if(id && category && pageQ) {
-        //     dispatch(getMoviesWithGenrePaginationThunk({genre:id, page:pageQ}))
-        // } else if (!id && category && genres.length && pageQ) {
-        //     const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //     if(find?.id) {
-        //         dispatch(getMoviesWithGenrePaginationThunk({genre:find.id, page:pageQ}))
-        //     }
-        // }
-        // if(!movies.length && !category) {
-        //     dispatch(getAllMoviesThunk());
-        // } else if (!!movies.length && !category && pageQ) {
-        //     dispatch(getAllMoviesPaginationThunk(pageQ))
-        // } else if(!movies.length && !category && pageQ) {
-        //     dispatch(getAllMoviesPaginationThunk(pageQ))
-        //     return
-        // }
-        //
-        // if(id && category) {
-        //     dispatch(getMoviesWithGenreThunk(id))
-        // } else if (!id && category && genres.length) {
-        //     const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //     if(find?.id) {
-        //         dispatch(getMoviesWithGenreThunk(find.id))
-        //     }
-        // } else if(id && category && pageQ) {
-        //     dispatch(getMoviesWithGenrePaginationThunk({genre:id, page:pageQ}))
-        // } else if (!id && category && genres.length && pageQ) {
-        //     const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //     if(find?.id) {
-        //         dispatch(getMoviesWithGenrePaginationThunk({genre:find.id, page:pageQ}))
-        //     }
-        // }
     },[id,pageQ,pageQuery])
 
     useEffect(()=> {
@@ -163,59 +86,7 @@ const MoviesListCards:FC = () => {
             }
         }
 
-        // if(category) {
-        //     if(id && genres.length) {
-        //         dispatch(getMoviesWithGenreThunk(id))
-        //     } else if (!id && category && genres.length) {
-        //         const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //         if(find?.id) {
-        //             dispatch(getMoviesWithGenreThunk(find.id))
-        //         }
-        //     } else if (id && pageQ && !!moviesWithGenre.length) {
-        //         dispatch(getMoviesWithGenrePaginationThunk({genre: id, page: pageQ}))
-        //     } else if (!id && category && !moviesWithGenre.length && genres.length && pageQuery) {
-        //         const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //         if(find?.id) {
-        //             dispatch(getMoviesWithGenrePaginationThunk({genre: find.id, page: pageQuery}))
-        //         }
-        //     }
-        // }
-        // if(id && category && movies.length) {
-        //     dispatch(getMoviesWithGenreThunk(id))
-        // } else if (!id && category && genres.length) {
-        //     const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //     if(find?.id) {
-        //         dispatch(getMoviesWithGenreThunk(find.id))
-        //     }
-        // }
-        //
-        // if(id && category && pageQ && !!moviesWithGenre.length) {
-        //     dispatch(getMoviesWithGenrePaginationThunk({genre: id, page: pageQ}))
-        // } else if (!id && category && !moviesWithGenre.length && genres.length && pageQuery) {
-        //     const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-        //     if(find?.id) {
-        //         dispatch(getMoviesWithGenrePaginationThunk({genre: find.id, page: pageQuery}))
-        //     }
-        // }
-
     }, [id,genres, pageQ])
-
-    // console.log(pageQuery, 'query');
-    // console.log(pageQ, 'redux');
-    // useEffect(()=> {
-    //     if(!movies.length && !category) {
-    //         dispatch(getAllMoviesThunk());
-    //         return
-    //     }
-    //     if(id && category) {
-    //         dispatch(getMoviesWithGenreThunk(id))
-    //     } else if (!id && category && genres.length) {
-    //         const find = genres.find(genre => pathname.includes(`${genre.name}`) );
-    //         if(find?.id) {
-    //             dispatch(getMoviesWithGenreThunk(find.id))
-    //         }
-    //     }
-    // },[id,genres])
 
     return (
         <>

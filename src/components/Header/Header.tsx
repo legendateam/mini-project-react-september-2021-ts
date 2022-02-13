@@ -1,20 +1,23 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
+
 import {Switch} from '@mui/material';
 
 import './Header.css';
 import Logo from '../styles/Logo/Logo';
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {setChecked} from "../../store";
 
 const Header: FC = () => {
-    const [checked, setChecked] = useState(false);
+    const {checked,NightHeader} = useAppSelector(state => state.toggleThemeReducer);
+    const dispatch = useAppDispatch();
 
     const handleChange = () => {
-        setChecked(!checked)
+        dispatch(setChecked({checked:!checked}))
     }
 
     return (
-        <header className={'header'}>
-
+        <header className={`header ${NightHeader}`}>
             <ul className={'header__ul flex'}>
                 <Link to={'/'}><li><Logo/></li></Link>
 
@@ -30,7 +33,7 @@ const Header: FC = () => {
                         Dark theme:
                         {!checked ? 'OFF' : 'ON'}
                     </span>
-                    <Switch className={'pizda'}
+                    <Switch
                         checked={checked}
                         onChange={handleChange}
                         inputProps={{'aria-label': 'controlled'}}/>

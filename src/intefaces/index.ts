@@ -10,10 +10,17 @@ export * from './sliceIntefaces/genre.interface';
 export * from './servicesIntefaces/genres.interface';
 export * from './actionsIntefaces/genresAction.interface';
 export * from './propsComponents/genreComponent.interface';
-export * from './IUseLocation';
 export * from './actionsIntefaces/movieWitchGenre.interface';
 export * from './propsComponents/propsSelect.interface';
 export * from './actionsIntefaces/pagePagination.interface';
 export * from './actionsIntefaces/IMovieDetailAction.interface';
 export * from './actionsIntefaces/getMoviesWithGenrePagination.interface';
-
+export * from './propsComponents/videosDetailProps.interface';
+export * from './propsComponents/ratingProps.interface';
+export * from './propsComponents/companyProps.interface';
+export * from './propsComponents/countryProps.interface';
+export * from './sliceIntefaces/credits.interface';
+export * from './actionsIntefaces/creditAction.interface';
+export * from './propsComponents/creditProps.interface';
+export * from './toggle';
+export * from './actionsIntefaces/toggleAction.interface'

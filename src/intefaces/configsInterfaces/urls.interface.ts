@@ -11,5 +11,6 @@ export interface IUrls {
     regions: string,
     key: string,
     poster: string,
-    posterW500: string
+    posterW500: string,
+    youTube: string
 }

@@ -15,7 +15,8 @@ const urls:IUrls = {
     regions: '/regions',
     key: '?api_key=eb0ad9008e4a444b2fc710f3e05a3ea9',
     poster: 'https://image.tmdb.org/t/p/original',
-    posterW500: 'https://image.tmdb.org/t/p/w500'
+    posterW500: 'https://image.tmdb.org/t/p/w500',
+    youTube: 'https://www.youtube.com/watch?v='
 }
 
 export default baseURL;

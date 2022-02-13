@@ -4,12 +4,16 @@ import providerRegionReducer from './slices/providerRegion.slice';
 import arrowReducer from './slices/arrowTop.slice';
 import moviesReducer from './slices/movie.slice';
 import genreReducer from './slices/genre.slice';
+import creditsReducer from "./slices/credits.slice";
+import toggleThemeReducer from "./slices/toggleThemeMode.slice";
 
 const rootReducer = combineReducers({
     providerRegionReducer,
     arrowReducer,
     moviesReducer,
-    genreReducer
+    genreReducer,
+    toggleThemeReducer,
+    creditsReducer
 })
 
 const setupStore = () => configureStore({

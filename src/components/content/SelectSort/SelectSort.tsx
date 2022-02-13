@@ -69,14 +69,6 @@ const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
             console.log('ddddddddddddddddddddd')
         }
 
-        // if(!sort.length && !category && sortQuery) {
-        //     dispatch(sortMovies({sortBy: sortQuery}))
-        //     setQuery({sort: sortQuery})
-        // } else if (!sort.length && category && sortQuery) {
-        //     dispatch(sortMoviesWithGenre({sortBy: sortQuery}))
-        //     setQuery({sort : sortQuery})
-        // }
-
     }, [sort,movies,moviesWithGenre]);
 
     const handleChangeSort = (event: SelectChangeEvent<string>) => {

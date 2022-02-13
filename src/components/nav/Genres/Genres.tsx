@@ -9,6 +9,7 @@ import {AsyncStateEnum} from '../../../enums';
 
 const Genres: FC<IMovieCardProps> = ({movie}) => {
     const {genres,error,status} = useAppSelector(state => state.genreReducer);
+
     const [newGenres,setNewGenres] = useState<IGenre[]>([]);
 
     useEffect(()=> {

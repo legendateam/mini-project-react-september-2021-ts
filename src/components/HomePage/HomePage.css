@@ -20,3 +20,7 @@
     justify-content: end;
 }
 
+.movie__details{
+    background-size: contain;
+}
+

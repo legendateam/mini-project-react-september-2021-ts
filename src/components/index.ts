@@ -1,5 +1,5 @@
 export * from './content/MovieDetails/MovieDetails'
-export * from './content/MovieDetail/MovieDetail';
+export * from './content/Credits/Credits';
 export * from './content/MoviesListCards/MoviesListCards';
 export * from './content/MovieCard/MovieCard';
 export * from './content/ProviderRegion/ProviderRegion';
@@ -17,4 +17,9 @@ export * from './Poster/Poster';
 export * from './content/Filter/Filter';
 export * from './content/SelectGenres/SelectGenres';
 export * from './content/SelectSort/SelectSort';
-export * from './PaginationPage/PaginationPage'
+export * from './PaginationPage/PaginationPage';
+export * from './VideoDetail/VideoDetail';
+export * from './Company/Company';
+export * from './Country/Country';
+export * from './content/Credit/Credit';
+export * from './content/Credits/Credits'

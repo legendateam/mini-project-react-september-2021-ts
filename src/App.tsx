@@ -3,11 +3,22 @@ import {Routes} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 
 import './App.css';
-import {Filter, Footer, HomePage, Layout, MovieDetails, MoviesListCards, NotFoundPage} from './components';
+import {Filter,HomePage, Layout, MovieDetails, MoviesListCards, NotFoundPage} from './components';
+import {useAppDispatch, useAppSelector} from "./hooks";
+import {setAddNightHeader, setClass} from "./store";
 
 const App:FC = () => {
+    const {addClass,checked} = useAppSelector(state => state.toggleThemeReducer);
+    const dispatch = useAppDispatch();
+    if(checked) {
+        dispatch(setClass({addClass:'night dark-scheme'}))
+        dispatch(setAddNightHeader(({addHeader:'night__header'})))
+    } else if (!checked) {
+        dispatch(setClass(({addClass:''})))
+        dispatch(setAddNightHeader(({addHeader:''})))
+    }
     return (
-        <div className={'background__color-white'}>
+        <div className={`${addClass}`}>
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
                     <Route index element={<HomePage/>}/>
@@ -24,28 +35,3 @@ const App:FC = () => {
 };
 
 export default App;
-
-
-// import React, {FC} from 'react';
-// import {Routes} from 'react-router-dom';
-// import {Route} from 'react-router-dom';
-//
-// import './App.css';
-// import {HomePage, Layout, MoviesListCards, NotFoundPage} from './components';
-//
-// const App:FC = () => {
-//     return (
-//         <div className={'background__color-white'}>
-//             <Routes>
-//                 <Route path={'/'} element={<Layout/>}>
-//                     <Route path={'/'} element={<HomePage/>}/>
-//                     <Route path={'movies'} element={<MoviesListCards/>}/>
-//                     <Route path={'movies:genres'} element={<MoviesListCards/>}/>
-//                     <Route path={'*'} element={<NotFoundPage/>}/>
-//                 </Route>
-//             </Routes>
-//         </div>
-//     );
-// };
-//
-// export default App;

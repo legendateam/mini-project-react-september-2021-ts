@@ -1,0 +1,51 @@
+.movie__details {
+    flex-direction: column;
+    gap: 40px;
+    color: #FFFFFF;
+    padding: 20px 125px;
+}
+
+.wrapper__movie_details {
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    margin: 50px;
+}
+
+.movie__details_title{
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.movie__details-content h1 {
+    border-bottom: 1px solid white;
+}
+
+.movie__details_title_genres,.movie__details_title  h5{
+    font-size: 13px;
+}
+.movie__details-country, .movie__details-genres img{
+    width: 150px;
+    height: 50px;
+}
+
+.movie__details-content{
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 800px;
+    gap: 10px;
+}
+
+.movie__details-company {
+    margin-top: 20px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.wrapper__movie_details-poster img{
+    width: 220px;
+    height: 320px;
+}
+
+

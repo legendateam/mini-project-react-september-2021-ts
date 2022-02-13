@@ -1,0 +1,6 @@
+.credits {
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow: hidden;
+    height: 180px;
+}
