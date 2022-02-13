@@ -27,7 +27,7 @@ const MovieDetails:FC = () => {
             dispatch(getMovieDetailsThunk(id))
             dispatch(getAllCreditsThunk(id))
         }
-    },[])
+    },[id])
 
     const find:IVideos|undefined = movieDetail?.videos.results.find(video =>video.type === 'Trailer');
     return (

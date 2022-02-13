@@ -53,7 +53,9 @@ const Filter: FC = () => {
                 }
             </div>
             }
-            <PaginationPage/>
+            <div className={'pagination flex'}>
+                <PaginationPage/>
+            </div>
             <Outlet/>
         </div>
     );

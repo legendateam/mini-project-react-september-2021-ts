@@ -21,7 +21,12 @@
     margin: 50px;
     padding: 0 125px;
     flex-direction: column;
-    gap: 60px
+    gap: 30px
+}
+
+.pagination {
+    justify-content: end;
+    padding-right: 80px;
 }
 
 

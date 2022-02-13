@@ -13,10 +13,10 @@ const App:FC = () => {
 
     if(checked) {
         dispatch(setClass({addClass:'night dark-scheme'}))
-        // dispatch(setAddNightHeader(({addHeader:'night__header'})))
+        dispatch(setAddNightHeader(({addHeader:'night__header'})))
     } else if (!checked) {
         dispatch(setClass(({addClass:''})))
-        // dispatch(setAddNightHeader(({addHeader:''})))
+        dispatch(setAddNightHeader(({addHeader:''})))
     }
     return (
         <div className={`${addClass}`}>

@@ -6,6 +6,7 @@
 body {
     padding: 0!important;
     overflow: visible!important;
+    height: 100vh;
 }
 .flex {
     display: flex;
@@ -19,7 +20,7 @@ a {
     color: red
 }
 
-.night { background: #313335; color: white; }
+.night { background: #121212; color: white; }
 
 @media (prefers-color-scheme: dark) {
     .night.dark-scheme { background: black; color:  #ddd; }

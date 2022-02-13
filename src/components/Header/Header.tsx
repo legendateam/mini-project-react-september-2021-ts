@@ -1,12 +1,11 @@
 import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
-
 import {Switch} from '@mui/material';
 
 import './Header.css';
 import Logo from '../styles/Logo/Logo';
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {setChecked} from "../../store";
+import { setChecked} from "../../store";
 
 const Header: FC = () => {
     const {checked,NightHeader} = useAppSelector(state => state.toggleThemeReducer);
@@ -24,7 +23,7 @@ const Header: FC = () => {
                 <li>
                     <ul className={'header__ul_child-ul flex'}>
                         <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/movies/list'}>Movies</Link></li>
+                        <li><Link to={'movies/list'}>Movies</Link></li>
                     </ul>
                 </li>
 
