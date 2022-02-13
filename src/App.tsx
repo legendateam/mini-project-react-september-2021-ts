@@ -10,12 +10,13 @@ import {setAddNightHeader, setClass} from "./store";
 const App:FC = () => {
     const {addClass,checked} = useAppSelector(state => state.toggleThemeReducer);
     const dispatch = useAppDispatch();
+
     if(checked) {
         dispatch(setClass({addClass:'night dark-scheme'}))
-        dispatch(setAddNightHeader(({addHeader:'night__header'})))
+        // dispatch(setAddNightHeader(({addHeader:'night__header'})))
     } else if (!checked) {
         dispatch(setClass(({addClass:''})))
-        dispatch(setAddNightHeader(({addHeader:''})))
+        // dispatch(setAddNightHeader(({addHeader:''})))
     }
     return (
         <div className={`${addClass}`}>
