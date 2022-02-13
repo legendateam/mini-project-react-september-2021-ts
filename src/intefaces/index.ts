@@ -13,4 +13,7 @@ export * from './propsComponents/genreComponent.interface';
 export * from './IUseLocation';
 export * from './actionsIntefaces/movieWitchGenre.interface';
 export * from './propsComponents/propsSelect.interface';
-export * from './actionsIntefaces/pagePagination.interface'
+export * from './actionsIntefaces/pagePagination.interface';
+export * from './actionsIntefaces/IMovieDetailAction.interface';
+export * from './actionsIntefaces/getMoviesWithGenrePagination.interface';
+

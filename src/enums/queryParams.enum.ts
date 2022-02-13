@@ -17,5 +17,6 @@ export enum QueryParamsEnum {
     release_dateLte = 'release_date.lte=',
     with_release_type = 'with_release_type=',
     year = 'year=',
-    with_genres = 'with_genres='
+    with_genres = 'with_genres=',
+    append_to_response_videos = 'append_to_response=videos'
 }

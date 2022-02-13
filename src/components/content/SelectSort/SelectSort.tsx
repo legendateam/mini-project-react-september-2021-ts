@@ -28,36 +28,55 @@ const SelectSort: FC<IMenuProps> = ({MenuProps}) => {
 
     const menuSort: string[] = ['A-Z', 'Z-A', 'Top Popular', 'Useless'];
     useEffect(() => {
-        if (!!sort.length && !category) {
+        if (!!sort.length && !category && !pageQ) {
             dispatch(sortMovies({sortBy: sort}))
             console.log('aaaaaaaaaaaaaaaaaa')
+            setQuery({sort:sort})
         } else if (!!sort.length && !category && pageQ) {
             dispatch(sortMovies({sortBy: sort}))
             console.log('dupa')
+            setQuery({sort:sort, page: pageQ.toString()})
         }
 
-        if (!!sort.length && category) {
+        if (!!sort.length && category && !pageQ) {
             dispatch(sortMoviesWithGenre({sortBy: sort}))
             console.log('bbbbbbbbbbbbbbb')
         } else if (!!sort.length && category && pageQ) {
             dispatch(sortMoviesWithGenre({sortBy: sort}))
             console.log('pizda')
+            setQuery({sort:sort, page: pageQ.toString()})
         }
 
-        if(!movies.length && !category && !sort.length && sortQuery) {
+        if(!movies.length && !category && !sort.length && sortQuery && !pageQ) {
             setSort(sortQuery)
             dispatch(sortMovies({sortBy: sort}))
+            setQuery({sort:sort})
             console.log('eeeeeeeeeeeeeeee')
-        } else if(!moviesWithGenre.length && category && !sort.length && sortQuery) {
+        } else if(!moviesWithGenre.length && category && !sort.length && sortQuery && !pageQ) {
             setSort(sortQuery)
             dispatch(sortMoviesWithGenre({sortBy: sort}))
+            setQuery({sort:sort})
+            console.log('ddddddddddddddddddddd')
+        }   else if(!movies.length && !category && !sort.length && sortQuery && pageQ) {
+            setSort(sortQuery)
+            dispatch(sortMovies({sortBy: sort}))
+            setQuery({sort:sort, page: pageQ.toString()})
+            console.log('eeeeeeeeeeeeeeee')
+        } else if(!moviesWithGenre.length && category && !sort.length && sortQuery && pageQ) {
+            setSort(sortQuery)
+            dispatch(sortMoviesWithGenre({sortBy: sort}))
+            setQuery({sort:sort, page: pageQ.toString()})
             console.log('ddddddddddddddddddddd')
         }
-        if(!sort.length && !category && sortQuery) {
-            dispatch(sortMovies({sortBy: sortQuery}))
-        } else if (!sort.length && category && sortQuery) {
-            dispatch(sortMoviesWithGenre({sortBy: sortQuery}))
-        }
+
+        // if(!sort.length && !category && sortQuery) {
+        //     dispatch(sortMovies({sortBy: sortQuery}))
+        //     setQuery({sort: sortQuery})
+        // } else if (!sort.length && category && sortQuery) {
+        //     dispatch(sortMoviesWithGenre({sortBy: sortQuery}))
+        //     setQuery({sort : sortQuery})
+        // }
+
     }, [sort,movies,moviesWithGenre]);
 
     const handleChangeSort = (event: SelectChangeEvent<string>) => {

@@ -1,12 +1,22 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {IError, IMovies, IAllMovies, ISortBy,IPage} from '../../intefaces';
+import {
+    IError,
+    IMovies,
+    IAllMovies,
+    ISortBy,
+    IPage,
+    IMovieDetailAction,
+    IGetMoviesWithGenrePagination, IResultsMovie,
+} from '../../intefaces';
 import {moviesService} from '../../services';
 import {AsyncStateEnum} from '../../enums';
 
 const initialState:IMovies = {
     movies: [],
     moviesWithGenre: [],
+    movieDetail: null,
+    id: null,
     pageQ: null,
     status: null,
     error: null
@@ -48,12 +58,24 @@ const getAllMoviesPaginationThunk = createAsyncThunk<void,number>(
     }
 );
 
-const getMoviesWithGenrePaginationThunk = createAsyncThunk<void, { genre:number, page: number }>(
+const getMoviesWithGenrePaginationThunk = createAsyncThunk<void, IGetMoviesWithGenrePagination>(
     'moviesSlice/getMoviesWithGenrePaginationThunk',
     async({genre,page}, {dispatch,rejectWithValue}) => {
         try {
             const {data} = await moviesService.getWithGenreAndPage(genre, page);
             dispatch(getMoviesWithGenre({movies:data.results}))
+        } catch (e) {
+            return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
+        }
+    }
+);
+
+const getMovieDetailsThunk = createAsyncThunk<void,  number>(
+    'moviesSlice/getMovieDetailsThunk',
+    async(id, {dispatch,rejectWithValue}) => {
+        try {
+            const {data} = await moviesService.getMovieDetails(id);
+            dispatch(getMovieDetails({movie:data}))
         } catch (e) {
             return rejectWithValue(dispatch(rejectMovie({error: (e as Error).message})))
         }
@@ -137,6 +159,12 @@ const moviesSlice = createSlice({
         addPage: (state, action:PayloadAction<IPage>) => {
             state.pageQ = action.payload.page
         },
+        getMovieDetails: (state, action:PayloadAction<IMovieDetailAction>) => {
+            state.movieDetail = action.payload.movie
+        },
+        setIdDetail: (state, action:PayloadAction<{ id: number }> ) => {
+            state.id = action.payload.id
+        },
         rejectMovie: (state, action:PayloadAction<IError>) => {
             state.error = action.payload.error
         }
@@ -189,11 +217,23 @@ const moviesSlice = createSlice({
         builder.addCase(getMoviesWithGenrePaginationThunk.rejected, state => {
             state.status = AsyncStateEnum.rejected
         });
+
+        builder.addCase(getMovieDetailsThunk.pending, state => {
+            state.status = AsyncStateEnum.pending;
+            state.error = null
+        });
+        builder.addCase(getMovieDetailsThunk.fulfilled, state => {
+            state.status = AsyncStateEnum.fulfilled;
+            state.error = null;
+        });
+        builder.addCase(getMovieDetailsThunk.rejected, state => {
+            state.status = AsyncStateEnum.rejected
+        });
     }
 });
 
 const moviesReducer = moviesSlice.reducer;
-export const {rejectMovie,sortMoviesWithGenre,sortMovies,getAllMovies,getMoviesWithGenre,addPage} = moviesSlice.actions;
+export const {rejectMovie,sortMoviesWithGenre,sortMovies,getAllMovies,setIdDetail,getMoviesWithGenre,addPage,getMovieDetails} = moviesSlice.actions;
 
 export default moviesReducer;
-export {getAllMoviesThunk,getMoviesWithGenreThunk,getAllMoviesPaginationThunk,getMoviesWithGenrePaginationThunk}
+export {getAllMoviesThunk,getMoviesWithGenreThunk,getAllMoviesPaginationThunk,getMoviesWithGenrePaginationThunk,getMovieDetailsThunk}

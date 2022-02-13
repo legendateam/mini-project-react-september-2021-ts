@@ -1,15 +1,24 @@
 import React, {FC} from 'react';
+import {Link} from "react-router-dom";
 
 import './MovieCard.css';
 import {IMovieCardProps} from '../../../intefaces/propsComponents/movieCardProps.interface';
 import {Poster} from '../../Poster/Poster';
 import {StarRating} from '../../styles/StarsRating/StarRating';
 import {Genres} from '../../nav/Genres/Genres';
+import {useAppDispatch} from "../../../hooks";
+import {setIdDetail} from "../../../store";
 
 const MovieCard:FC<IMovieCardProps> = ({movie}) => {
+    const dispatch = useAppDispatch();
+    const onClickPoster = () => {
+        dispatch(setIdDetail({id:movie.id}))
+    }
     return (
         <div className={'movie__card flex'}>
-            <Poster poster={movie.poster_path} title={movie.title}/>
+            <Link to={`/${movie.title}`} onClick={onClickPoster}>
+                <Poster poster={movie.poster_path} title={movie.title}/>
+            </Link>
             <div className={'movie__card_title flex'}>
                 <h4>{movie.title}</h4>
                 <div className={'movie__card_preview flex'}>

@@ -31,12 +31,16 @@ const MoviesListCards:FC = () => {
         if(!category) {
             if(!movies.length  && !pageQ && !!results.length) {
                 dispatch(getAllMoviesThunk());
+                console.log('case 1')
             } else if (!!movies.length && !!results.length && !pageQ) {
                 dispatch(getAllMoviesThunk())
+                console.log('case 2')
             }  else if (!!movies.length && !!moviesWithGenre.length && !pageQ) {
                 dispatch(getAllMoviesThunk())
+                console.log('case3')
             } else if (!!movies.length && pageQ) {
                 dispatch(getAllMoviesPaginationThunk(pageQ))
+                console.log('case 4')
                 return
             }
 
@@ -50,14 +54,16 @@ const MoviesListCards:FC = () => {
 
            if(!movies.length && pageQ && !moviesWithGenre.length) {
                 dispatch(getAllMoviesPaginationThunk(pageQ))
+               console.log('case 5')
             } else if (!movies.length && pageQ && !!moviesWithGenre.length) {
                dispatch(getAllMoviesThunk())
+               console.log('case 6')
                return
            }
 
-
            if(!results.length && !movies.length && !pageQuery) {
                 dispatch(getAllMoviesThunk())
+               console.log('case 7')
             }
         }
 

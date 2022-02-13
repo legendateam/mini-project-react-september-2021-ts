@@ -3,7 +3,7 @@ import {Routes} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 
 import './App.css';
-import {Filter, Footer, HomePage, Layout, MoviesListCards, NotFoundPage} from './components';
+import {Filter, Footer, HomePage, Layout, MovieDetails, MoviesListCards, NotFoundPage} from './components';
 
 const App:FC = () => {
     return (
@@ -11,6 +11,7 @@ const App:FC = () => {
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
                     <Route index element={<HomePage/>}/>
+                    <Route path={':movie'} element={<MovieDetails/>}/>
                     <Route path={'movies'} element={<Filter/>}>
                         <Route path={'list'} element={<MoviesListCards/>}/>
                         <Route path={'list/category/:genre'} element={<MoviesListCards/>}/>
