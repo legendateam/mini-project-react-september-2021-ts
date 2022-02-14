@@ -3,7 +3,7 @@ import React, {FC, useEffect, useState} from 'react';
 import './MovieDetails.css'
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {getAllCreditsThunk, getMovieDetailsThunk} from "../../../store";
-import { IResultsMovie, IVideos} from "../../../intefaces";
+import { IResultsMovie} from "../../../intefaces";
 import {Poster} from "../../Poster/Poster";
 import {VideoDetail} from "../../VideoDetail/VideoDetail";
 import {Company} from "../../Company/Company";
@@ -29,7 +29,6 @@ const MovieDetails:FC = () => {
         }
     },[id])
 
-    const find:IVideos|undefined = movieDetail?.videos.results.find(video =>video.type === 'Trailer');
     return (
         <div className={'movie__details flex'}>
             {status === AsyncStateEnum.rejected && <h1>{error}</h1> }
@@ -51,7 +50,7 @@ const MovieDetails:FC = () => {
                             <h5>{movieDetail?.release_date}</h5>
                             {
                                 movieDetail?.production_countries.map(country =>
-                                    <div className={'movie__details-country'}><Country key={country.name} country={country}/></div>)
+                                    <div key={country.name} className={'movie__details-country'}><Country country={country}/></div>)
                             }
                         </div>
                         <p>{movieDetail?.overview}</p>
@@ -59,12 +58,12 @@ const MovieDetails:FC = () => {
                         <div className={'movie__details-company flex'}>
                             {
                                 movieDetail?.production_companies.map(company =>
-                                    <div className={'movie__details-genres flex'}><Company key={company.id} company={company}/></div>)
+                                    <div key={company.id} className={'movie__details-genres flex'}><Company company={company}/></div>)
                             }
                         </div>
                     </div>
                 </div>
-                <VideoDetail video={find}/>
+                <VideoDetail/>
             </div>
         </div>
     );
