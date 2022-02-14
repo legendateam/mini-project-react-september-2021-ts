@@ -16,6 +16,11 @@
     height: 300px;
 }
 
+.movie__card img:hover{
+    height: 320px;
+    width: 220px;
+}
+
 .movie__card_title{
     gap: 15px;
     align-items: center;
